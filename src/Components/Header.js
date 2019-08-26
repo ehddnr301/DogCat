@@ -53,9 +53,9 @@ export default withRouter(({ location: { pathname } }) => (
       <Item current={pathname === "/cat"}>
         <SLink to="/cat">CAT</SLink>
       </Item>
-      {/* <Item current={pathname === "/favorite"}>
+      <Item current={pathname === "/favorite"}>
         <SLink to="/favorite">최애</SLink>
-      </Item> */}
+      </Item>
     </List>
   </Header>
 ));

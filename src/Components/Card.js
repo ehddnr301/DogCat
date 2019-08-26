@@ -7,7 +7,6 @@ const Container = styled.div`
   height: 300px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 4px;
-  position: relative;
 
   /* PULSE */
   @keyframes pulse {
@@ -26,16 +25,7 @@ const Container = styled.div`
     animation-iteration-count: infinite;
     animation-direction: reverse;
   }
-`;
-
-const Image = styled.div`
-  width: 300px;
-  height: 300px;
-  background-size: cover;
-  border-radius: 4px;
-  background-position: center center;
-  background-image: url(${props => props.bgUrl});
-  transition: opacity 0.1s linear;
+  position: relative;
 `;
 
 const Get = styled.div`
@@ -50,6 +40,7 @@ const Get = styled.div`
   &:hover {
     opacity: 1;
   }
+  cursor: pointer;
 `;
 
 const Text = styled.span`
@@ -57,19 +48,42 @@ const Text = styled.span`
   font-family: "Anton", sans-serif;
   font-size: 40px;
   text-transform: uppercase;
+  border: 3px solid white;
+  padding: 2px 5px;
+  border-radius: 5px;
 `;
 
-const Card = ({ imageUrl, id }) => (
-  <Container id={id}>
-    <Get>
-      <Text>add</Text>
-    </Get>
-    <Image
-      bgUrl={imageUrl ? imageUrl : null}
-      onClick={event => console.log(imageUrl)}
-    />
-  </Container>
-);
+const Image = styled.div`
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  border-radius: 4px;
+  background-position: center center;
+  background-image: url(${props => props.bgUrl});
+  transition: opacity 0.1s linear;
+`;
+
+const array = [];
+
+const Card = ({ imageUrl, id }) => {
+  return (
+    <Container id={id}>
+      <Image bgUrl={imageUrl ? imageUrl : null} />
+      <Get
+        onClick={event => {
+          if (array.includes(imageUrl)) {
+            console.log("already exist");
+          } else {
+            array.push(imageUrl);
+            localStorage.setItem("favorite", JSON.stringify(array));
+          }
+        }}
+      >
+        <Text>get</Text>
+      </Get>
+    </Container>
+  );
+};
 
 Card.propTypes = {
   imageUrl: PropTypes.string,
