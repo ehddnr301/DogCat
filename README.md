@@ -5,5 +5,11 @@
 
 # favorite
 
-- 클릭해서 getId ( background-image를 얻을 수가 없다.)
-- id를 local에 저장.
+이미지를 로컬스토리지에 저장해서 보여준다.
+
+# 추가할 기능
+
+- 이미지 인피니트 스크롤
+- Favorite 에서 클릭하면 delete
+- 상세페이지...?
+- 디자인 업데이트
