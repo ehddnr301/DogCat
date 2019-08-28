@@ -17,9 +17,8 @@ const Container = styled.div`
       transform: scale(1);
     }
   }
-
   &:hover {
-    animation-name: pulse;
+    animation-name: ${props => (props.isFavorite ? "none" : "pulse")};
     animation-duration: 1s;
     animation-timing-function: ease-out;
     animation-iteration-count: infinite;
@@ -66,21 +65,24 @@ const Image = styled.div`
 const array = [];
 
 const Card = ({ imageUrl, id }) => {
+  const isFavorite = window.location.href.includes("favorite");
   return (
-    <Container id={id}>
+    <Container isFavorite={isFavorite} id={id}>
       <Image bgUrl={imageUrl ? imageUrl : null} />
-      <Get
-        onClick={event => {
-          if (array.includes(imageUrl)) {
-            console.log("already exist");
-          } else {
-            array.push(imageUrl);
-            localStorage.setItem("favorite", JSON.stringify(array));
-          }
-        }}
-      >
-        <Text>get</Text>
-      </Get>
+      {isFavorite ? null : (
+        <Get
+          onClick={event => {
+            if (array.includes(imageUrl)) {
+              console.log("already exist");
+            } else {
+              array.push(imageUrl);
+              localStorage.setItem("favorite", JSON.stringify(array));
+            }
+          }}
+        >
+          <Text>get</Text>
+        </Get>
+      )}
     </Container>
   );
 };
