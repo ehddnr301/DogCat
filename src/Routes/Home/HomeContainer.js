@@ -7,8 +7,10 @@ const HomeContainer = () => {
 
   const didMount = async () => {
     try {
-    } catch {
+    } catch (error) {
+      setError(error);
     } finally {
+      setLoading(false);
     }
   };
 

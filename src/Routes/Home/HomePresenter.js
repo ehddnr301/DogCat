@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Loader from "../../Components/Loader";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaDog, FaCat } from "react-icons/fa";
 
 const Container = styled.div`
@@ -17,7 +17,21 @@ const Box = styled.div`
   align-items: center;
 `;
 
-const Dog = styled(FaDog)``;
+const Content = styled.div`
+  span {
+    font-size: 80px;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: "Pacifico", cursive;
+`;
+
+const Dog = styled(FaDog)`
+  :hover {
+  }
+`;
 const Cat = styled(FaCat)`
   transform: scaleX(-1);
 `;
@@ -26,12 +40,18 @@ const SLink = styled(Link)``;
 const HomePresenter = ({ loading, error }) => (
   <Container>
     <Box>
-      <SLink to="/dog">
-        <Dog></Dog>
-      </SLink>
-      <SLink to="/cat">
-        <Cat></Cat>
-      </SLink>
+      <Content>
+        <SLink to="/dog">
+          <Dog></Dog>
+        </SLink>
+        <span>dog</span>
+      </Content>
+      <Content>
+        <SLink to="/cat">
+          <Cat></Cat>
+        </SLink>
+        <span>cat</span>
+      </Content>
     </Box>
   </Container>
 );
