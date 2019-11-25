@@ -15,7 +15,7 @@ const DogPresenter = ({ dogImage, error, loading }) => (
       <Loader />
     ) : (
       <Container>
-        <Section title="Dog Image">
+        <Section title="">
           {dogImage.map(dog => (
             <Card imageUrl={dog.url} id={dog.id} key={dog.id} />
           ))}

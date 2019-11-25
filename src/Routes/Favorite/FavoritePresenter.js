@@ -33,7 +33,7 @@ const FavoritePresenter = ({ FavoriteImage, loading, error }) => (
         >
           Remove All
         </RemoveBtn>
-        <Section title="Favorite Image">
+        <Section title="">
           {FavoriteImage &&
             FavoriteImage.map((image, index) => (
               <Card id={JSON.stringify(index)} key={index} imageUrl={image} />
