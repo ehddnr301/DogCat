@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Card from "../../Components/Card";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   padding: 50px;
@@ -29,6 +30,7 @@ const FavoritePresenter = ({ FavoriteImage, loading, error }) => (
           onClick={event => {
             localStorage.removeItem("favorite");
             document.location.reload(true);
+            toast.success("삭제 완료");
           }}
         >
           Remove All

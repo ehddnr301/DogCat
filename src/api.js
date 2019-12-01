@@ -16,10 +16,10 @@ const api1 = axios.create({
 
 export const catApi = {
   catImage: (page = 1) =>
-    api.get("images/search", { params: { limit: "20", page } })
+    api.get("images/search", { params: { limit: "8", page } })
 };
 
 export const dogApi = {
   dogImage: (page = 1) =>
-    api1.get("images/search", { params: { limit: "20", page } })
+    api1.get("images/search", { params: { limit: "8", page } })
 };
