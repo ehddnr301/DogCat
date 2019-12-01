@@ -14,7 +14,7 @@ const CatPresenter = ({ catImage, loading, error }) => (
     {loading ? (
       <Loader />
     ) : (
-      <Section title="Cat Image">
+      <Section title="">
         {catImage.map(cat => (
           <Card imageUrl={cat.url} id={cat.id} key={cat.id} />
         ))}

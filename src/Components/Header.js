@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { FaDog, FaCat } from "react-icons/fa";
 
 const Header = styled.header`
   color: white;
@@ -11,7 +12,6 @@ const Header = styled.header`
   height: 50px;
   display: flex;
   align-items: center;
-
   background-color: #18cd61;
   z-index: 10;
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.4);
@@ -45,14 +45,10 @@ const SLink = styled(Link)`
 
 export default withRouter(({ location: { pathname } }) => (
   <Header>
-    <Title>CATDOG</Title>
+    <Title>
+      <SLink to="/">DogCat</SLink>
+    </Title>
     <List>
-      <Item current={pathname === "/"}>
-        <SLink to="/">DOG</SLink>
-      </Item>
-      <Item current={pathname === "/cat"}>
-        <SLink to="/cat">CAT</SLink>
-      </Item>
       <Item current={pathname === "/favorite"}>
         <SLink to="/favorite">최애</SLink>
       </Item>

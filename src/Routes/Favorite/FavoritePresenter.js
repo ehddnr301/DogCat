@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import Card from "../../Components/Card";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   padding: 50px;
@@ -29,11 +30,12 @@ const FavoritePresenter = ({ FavoriteImage, loading, error }) => (
           onClick={event => {
             localStorage.removeItem("favorite");
             document.location.reload(true);
+            toast.success("삭제 완료");
           }}
         >
           Remove All
         </RemoveBtn>
-        <Section title="Favorite Image">
+        <Section title="">
           {FavoriteImage &&
             FavoriteImage.map((image, index) => (
               <Card id={JSON.stringify(index)} key={index} imageUrl={image} />

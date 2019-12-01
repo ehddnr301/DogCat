@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   width: 100%;
@@ -43,13 +45,8 @@ const Get = styled.div`
 `;
 
 const Text = styled.span`
-  color: white;
-  font-family: "Anton", sans-serif;
   font-size: 40px;
-  text-transform: uppercase;
-  border: 3px solid white;
-  padding: 2px 5px;
-  border-radius: 5px;
+  color: white;
 `;
 
 const Image = styled.div`
@@ -66,6 +63,7 @@ const array = [];
 
 const Card = ({ imageUrl, id }) => {
   const isFavorite = window.location.href.includes("favorite");
+
   return (
     <Container isFavorite={isFavorite} id={id}>
       <Image bgUrl={imageUrl ? imageUrl : null} />
@@ -73,14 +71,15 @@ const Card = ({ imageUrl, id }) => {
         <Get
           onClick={event => {
             if (array.includes(imageUrl)) {
-              console.log("already exist");
+              toast.error("이미 추가한 사진입니다.");
             } else {
+              toast.success("저장완료");
               array.push(imageUrl);
               localStorage.setItem("favorite", JSON.stringify(array));
             }
           }}
         >
-          <Text>get</Text>
+          <Text></Text>
         </Get>
       )}
     </Container>
